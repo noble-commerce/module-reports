@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="NobleCommerce_Reports::inventory" title="Inventory" translate="title" module="NobleCommerce_Reports" sortOrder="70" parent="Magento_Reports::report" resource="NobleCommerce_Reports::inventory"/>
+        <add id="NobleCommerce_Reports::report_inventory_reservation" sortOrder="10" title="Inventory Reservation" module="NobleCommerce_Reports" parent="NobleCommerce_Reports::inventory" resource="NobleCommerce_Reports::inventory_reports" translate="title" action="reports/inventory/reservation"/>
+    </menu>
+</config>
