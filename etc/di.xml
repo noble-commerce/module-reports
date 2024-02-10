@@ -15,7 +15,7 @@
     </type>
     <type name="NobleCommerce\Reports\Model\InventoryReservationConfig">
         <arguments>
-            <argument name="storeManager" xsi:type="object">Magento\NobleCommerce\Model\NobleCommerceManagerInterface</argument>
+            <argument name="storeManager" xsi:type="object">Magento\Store\Model\StoreManagerInterface</argument>
             <argument name="urlBuilder" xsi:type="object">Magento\Framework\UrlInterface</argument>
             <argument name="scopeConfig" xsi:type="object">Magento\Framework\App\Config\ScopeConfigInterface</argument>
         </arguments>

@@ -5,7 +5,7 @@ namespace NobleCommerce\Reports\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\UrlInterface;
-use Magento\NobleCommerce\Model\NobleCommerceManagerInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class InventoryReservationConfig
@@ -20,7 +20,7 @@ class InventoryReservationConfig
     public $scopeConfig;
 
     public function __construct(
-        NobleCommerceManagerInterface $storeManager,
+        StoreManagerInterface $storeManager,
         UrlInterface $urlBuilder,
         ScopeConfigInterface $scopeConfig
     ) {

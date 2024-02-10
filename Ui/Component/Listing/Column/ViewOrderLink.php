@@ -7,7 +7,7 @@ use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Magento\NobleCommerce\Model\NobleCommerceManagerInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class ViewOrderLink
@@ -22,7 +22,7 @@ class ViewOrderLink extends Column
     private $urlBuilder;
 
     /**
-     * @var NobleCommerceManagerInterface
+     * @var StoreManagerInterface
      */
     private $storeManager;
 
@@ -32,7 +32,7 @@ class ViewOrderLink extends Column
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface $urlBuilder
-     * @param NobleCommerceManagerInterface $storeManager
+     * @param StoreManagerInterface $storeManager
      * @param array $components
      * @param array $data
      */
@@ -40,7 +40,7 @@ class ViewOrderLink extends Column
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
         UrlInterface $urlBuilder,
-        NobleCommerceManagerInterface $storeManager,
+        StoreManagerInterface $storeManager,
         array $components = [],
         array $data = []
     ) {

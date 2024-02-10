@@ -70,7 +70,7 @@ class InventoryReservation extends DataProvider
     {
         $adminUrlCustomPath = $this->config->scopeConfig->getValue('admin/url/custom_path');
         $adminPath = $adminUrlCustomPath ?? 'admin';
-        $baseUrl = $this->config->storeManager->getNobleCommerce()->getBaseUrl(UrlInterface::URL_TYPE_WEB);
+        $baseUrl = $this->config->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_WEB);
         $adminBaseUrl = rtrim($baseUrl, '/') . '/' . ltrim($adminPath, '/');
         $collection = $this->reporting->search($this->getSearchCriteria());
         $searchCriteria = $this->getSearchCriteria();
