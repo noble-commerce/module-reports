@@ -6,6 +6,7 @@
                 <resource id="Magento_Reports::report" title="Reports" translate="title">
                     <resource id="NobleCommerce_Reports::inventory" title="Inventory" translate="title">
                         <resource id="NobleCommerce_Reports::inventory_reports" title="Inventory Reservation" translate="title"/>
+                        <resource id="NobleCommerce_Reports::inventory_compensation" title="Inventory Compensation" translate="title"/>
                     </resource>
                 </resource>
             </resource>

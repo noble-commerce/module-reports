@@ -5,5 +5,8 @@
         <route id="reports" frontName="reports">
             <module name="NobleCommerce_Reports"/>
         </route>
+        <route id="noblecommerce_reports" frontName="noblecommerce_reports">
+            <module name="NobleCommerce_Reports"/>
+        </route>
     </router>
 </config>
