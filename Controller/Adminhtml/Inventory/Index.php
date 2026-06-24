@@ -11,7 +11,7 @@ class Index extends Action
     /**
      * Authorization level of a basic admin session
      */
-    const ADMIN_RESOURCE = 'NobleCommerce_Reports::inventory_compensation';
+    public const ADMIN_RESOURCE = 'NobleCommerce_Reports::inventory_compensation';
 
     /**
      * @var PageFactory

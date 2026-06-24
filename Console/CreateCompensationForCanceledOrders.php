@@ -14,20 +14,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CreateCompensationForCanceledOrders extends Command
 {
     /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
-    /**
      * Constructor
      *
      * @param ResourceConnection $resourceConnection Resource connection to execute direct queries
      */
     public function __construct(
-        ResourceConnection $resourceConnection
+        private readonly ResourceConnection $resourceConnection
     ) {
         parent::__construct();
-        $this->resourceConnection = $resourceConnection;
     }
 
     /**

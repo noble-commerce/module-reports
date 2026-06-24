@@ -6,8 +6,8 @@ use Magento\Backend\App\Action;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\View\Result\PageFactory;
 
 class Reservation extends Action implements HttpGetActionInterface
 {

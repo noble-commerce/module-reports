@@ -3,29 +3,19 @@ declare(strict_types=1);
 
 namespace NobleCommerce\Reports\Ui\Component\Listing;
 
-use NobleCommerce\Reports\Model\InventoryReservationConfig;
-use NobleCommerce\Reports\Model\DataProviderConfig;
 use Magento\Framework\Api\Search\SearchResultInterface;
-use Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider;
 use Magento\Framework\UrlInterface;
-use Zend_Db_Select;
+use Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider;
+use NobleCommerce\Reports\Model\DataProviderConfig;
+use NobleCommerce\Reports\Model\InventoryReservationConfig;
 use Zend_Db_Expr;
+use Magento\Framework\DB\Select;
 
 /**
  * Data provider for inventory reservation reports.
  */
 class InventoryReservation extends DataProvider
 {
-    /**
-     * @var InventoryReservationConfig
-     */
-    private $config;
-
-    /**
-     * @var DataProviderConfig
-     */
-    private $dataProviderConfig;
-
     /**
      * Constructor.
      *
@@ -38,16 +28,14 @@ class InventoryReservation extends DataProvider
      * @param string $requestFieldName
      */
     public function __construct(
-        InventoryReservationConfig $config,
-        DataProviderConfig $dataProviderConfig,
+        private readonly InventoryReservationConfig $config,
+        private readonly DataProviderConfig $dataProviderConfig,
         array $meta = [],
         array $data = [],
         string $name = 'inventory_reservation',
         string $primaryFieldName = 'reservation_id',
         string $requestFieldName = 'entity_id'
     ) {
-        $this->config = $config;
-        $this->dataProviderConfig = $dataProviderConfig;
         parent::__construct(
             $name,
             $primaryFieldName,
@@ -71,7 +59,7 @@ class InventoryReservation extends DataProvider
         $adminUrlCustomPath = $this->config->scopeConfig->getValue('admin/url/custom_path');
         $adminPath = $adminUrlCustomPath ?? 'admin';
         $baseUrl = $this->config->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_WEB);
-        $adminBaseUrl = rtrim($baseUrl, '/') . '/' . ltrim($adminPath, '/');
+        $adminBaseUrl = rtrim((string) $baseUrl, '/') . '/' . ltrim((string) $adminPath, '/');
         $collection = $this->reporting->search($this->getSearchCriteria());
         $searchCriteria = $this->getSearchCriteria();
         $currentPage = $searchCriteria->getCurrentPage() ?? 1;
@@ -79,7 +67,7 @@ class InventoryReservation extends DataProvider
         $collection->setPageSize($pageSize);
         $collection->setCurPage($currentPage);
 
-        $collection->getSelect()->reset(Zend_Db_Select::COLUMNS)
+        $collection->getSelect()->reset(Select::COLUMNS)
             ->columns([
                 'entity_id' => 'ir.reservation_id',
                 'increment_id' => 'main_table.increment_id',

@@ -6,26 +6,11 @@ namespace NobleCommerce\Reports\Ui\Component\Listing\Column;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
-use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Ui\Component\Listing\Columns\Column;
 
-/**
- * Class ViewOrderLink
- *
- * @package NobleCommerce\Reports\Ui\Component\Listing\Column
- */
 class ViewOrderLink extends Column
 {
-    /**
-     * @var UrlInterface
-     */
-    private $urlBuilder;
-
-    /**
-     * @var StoreManagerInterface
-     */
-    private $storeManager;
-
     /**
      * ViewOrderLink constructor.
      *
@@ -39,13 +24,11 @@ class ViewOrderLink extends Column
     public function __construct(
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
-        UrlInterface $urlBuilder,
-        StoreManagerInterface $storeManager,
+        private readonly UrlInterface $urlBuilder,
+        private readonly StoreManagerInterface $storeManager,
         array $components = [],
         array $data = []
     ) {
-        $this->urlBuilder = $urlBuilder;
-        $this->storeManager = $storeManager;
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
 

@@ -11,7 +11,6 @@ use Magento\Store\Model\StoreManagerInterface;
  * Class InventoryReservationConfig
  * Encapsulates configuration parameters for InventoryReservation.
  *
- * @package NobleCommerce\Reports\Model
  */
 class InventoryReservationConfig
 {
