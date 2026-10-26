@@ -1,0 +1,33 @@
+name: Publish package
+
+on:
+  release:
+    types: [published]
+
+permissions: {}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Token to trigger the registry build
+        id: token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ vars.REGISTRY_DISPATCH_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_DISPATCH_APP_PRIVATE_KEY }}
+          owner: noble-commerce
+          repositories: packages
+          permission-contents: write
+
+      - name: Ask the registry to rebuild this package
+        env:
+          GH_TOKEN: ${{ steps.token.outputs.token }}
+          REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
+          VERSION: ${{ github.event.release.tag_name }}
+        run: |
+          gh api repos/noble-commerce/packages/dispatches \
+            -f event_type=package-release \
+            -f "client_payload[repository_url]=$REPOSITORY_URL" \
+            -f "client_payload[version]=$VERSION"
